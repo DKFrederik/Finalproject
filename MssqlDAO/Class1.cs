@@ -8,5 +8,9 @@ namespace MssqlDAO
 {
     public class Class1
     {
+        public string GetData()
+        {
+            return null;
+        }
     }
 }

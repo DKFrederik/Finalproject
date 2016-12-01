@@ -4,21 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ElasticsearchDao
+namespace Controller
 {
-    public class Class1
+    public class DataController
     {
+        public string GetData()
+        {
+            return null;
+        }
+
         public string SaveData()
-        {
-            return null;
-        }
-
-        public string DeleteDat()
-        {
-            return null;
-        }
-
-        public string UpdateData()
         {
             return null;
         }
@@ -27,5 +22,6 @@ namespace ElasticsearchDao
         {
             return null;
         }
+
     }
 }
