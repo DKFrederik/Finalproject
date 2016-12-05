@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MssqlDAO", "MssqlDAO\MssqlD
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElasticsearchDao", "ElasticsearchDao\ElasticsearchDao.csproj", "{EE99EDD7-F3E7-45A0-90F4-4D6A18DA2B8D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestMssqlDAO", "TestMssqlDAO\TestMssqlDAO.csproj", "{8FA91335-04DB-4C32-8124-532B30EE4900}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{EE99EDD7-F3E7-45A0-90F4-4D6A18DA2B8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EE99EDD7-F3E7-45A0-90F4-4D6A18DA2B8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EE99EDD7-F3E7-45A0-90F4-4D6A18DA2B8D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8FA91335-04DB-4C32-8124-532B30EE4900}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FA91335-04DB-4C32-8124-532B30EE4900}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8FA91335-04DB-4C32-8124-532B30EE4900}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8FA91335-04DB-4C32-8124-532B30EE4900}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
