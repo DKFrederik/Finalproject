@@ -11,9 +11,9 @@ namespace Controller
     {
         private ElasticAccess elastic;
 
-        public ElasticCtr()
+        public ElasticCtr(string uri)
         {
-            elastic = new ElasticAccess();
+            elastic = new ElasticAccess(uri);
         }
 
         public int CreateIndex(string name)
