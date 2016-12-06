@@ -6,7 +6,7 @@ namespace TestMssqlDAO
 {
     [TestClass]
 
-    public class UnitTest1
+    public class DBAccessTest
     {
         [TestMethod]
         public void ConnectionTest()

@@ -61,6 +61,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataController.cs" />
+    <Compile Include="ElasticCtr.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -69,6 +70,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="changelog.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ElasticsearchDao\ElasticsearchDao.csproj">
+      <Project>{ee99edd7-f3e7-45a0-90f4-4d6a18da2b8d}</Project>
+      <Name>ElasticsearchDao</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
