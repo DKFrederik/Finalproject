@@ -1,6 +1,8 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using ElasticsearchDao;
+using Nest;
+using System.Net;
 
 namespace TestElasticsearchDao
 {
@@ -10,7 +12,7 @@ namespace TestElasticsearchDao
         [TestMethod]
         public void ElasticConnectionTest()
         {
-            Assert.IsTrue(false);
+
         }
     }
 }
