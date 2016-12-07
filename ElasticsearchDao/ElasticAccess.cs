@@ -13,9 +13,9 @@ namespace ElasticsearchDao
         private readonly ConnectionSettings connectionSettings;
         private readonly ElasticClient client;
 
-        public ElasticAccess(string uri)
+        public ElasticAccess()
         {
-            node = new Uri(uri);
+            node = new Uri("http://localhost:9200/");
             connectionSettings = new ConnectionSettings(node);
             client = new ElasticClient(connectionSettings);
         }
@@ -26,7 +26,7 @@ namespace ElasticsearchDao
 
             if(!client.IndexExists(name).Exists)
             {
-                var createIndex = client.CreateIndex(name);
+                var createIndex = client.CreateIndex(name, c => c.Mappings(m => m.Map<Product>(p => p.AutoMap())));
                 rc = 0;
             }
 
@@ -44,6 +44,28 @@ namespace ElasticsearchDao
             }
 
             return rc;
+        }
+
+        public string AddDocToIndex(string targetIndex, Object doc)
+        {
+            var res = client.Index(doc, i => i.Index(targetIndex));
+            //var res = client.LowLevel.Index<String>(targetIndex, "type-name", doc);
+            return res.ToString();
+        }
+
+        public string SimpleSearch(string searchTerm, string searchField)
+        {
+            Field field = new Field();
+            field = searchField;
+
+            var res = client.Search<Product>(s => s.From(0).Size(5).Query(q => q.Match(m => m.Field(searchField).Query(searchTerm))));
+            string result = "";
+            foreach(var hit in res.Hits)
+            {
+                result += hit.Id;
+            }
+
+            return result;
         }
     }
 }
