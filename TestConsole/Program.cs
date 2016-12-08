@@ -5,28 +5,79 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Nest;
+using System.IO;
+using System.Data.SqlClient;
+using MssqlDAO;
 
 namespace TestConsole
 {
     class Program
     {
+
         static void Main(string[] args)
         {
-            //string uri = "http://localhost:9200/";
-
-            //var req = System.Net.WebRequest.Create(uri);
-            //System.Net.WebResponse resp = req.GetResponse();
-            //System.IO.StreamReader sr = new System.IO.StreamReader(resp.GetResponseStream());
-
-            //Console.WriteLine(sr.ReadToEnd().Trim());
-            //Console.ReadLine();
+            DBAccess dba = new DBAccess();
 
             Uri node = new Uri("http://localhost:9200");
             ConnectionSettings settings = new ConnectionSettings(node);
-            ElasticClient client = new ElasticClient(settings);
+            var client = new ElasticClient(settings);
 
-            Console.WriteLine(client.CatHealth().CallDetails.Success);
-            Console.ReadKey();
+            //DataReader
+            string sql = "SELECT * FROM Products";
+            var products = new List<Product>();
+
+            using (SqlCommand cmd = dba.GetDbCommand(sql))
+            {
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    try
+                    {
+                        while (reader.Read())
+                        {
+                            var p = new Product()
+                            {
+                                name = reader.GetString("name"),
+                                description = reader.GetString("description"),
+                                cat1 = reader.GetString("cat1"),
+                                cat2 = reader.GetString("cat2"),
+                                cat3 = reader.GetString("cat3"),
+                                cat4 = reader.GetString("cat4")
+                            };
+                            products.Add(p);                                                  
+                        }
+                    }
+
+                    catch
+                    {
+                        Console.WriteLine("An exception occurred!");
+                    }
+                }
+                cmd.Parameters.Clear();
+            }
+
+            var descriptor = new BulkDescriptor();
+
+            descriptor.Index(new IndexName() { Name = "golf" });
+
+            foreach (var product in products)
+            {
+                descriptor.Index<Product>(i => i.Document(product));
+            }
+
+            var response = client.Bulk(descriptor);
+
+
         }
+    }
+
+    class Product
+    {
+        //public int id { get; set; }
+        public string name { get; set; }
+        public string description { get; set; }
+        public string cat1 { get; set; }
+        public string cat2 { get; set; }
+        public string cat3 { get; set; }
+        public string cat4 { get; set; }
     }
 }
