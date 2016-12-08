@@ -15,11 +15,7 @@ namespace ElasticsearchDao
 
         public ElasticAccess()
         {
-<<<<<<< HEAD
-            node = new Uri("localhost:9200");
-=======
             node = new Uri("http://localhost:9200/");
->>>>>>> SimpleSearch
             connectionSettings = new ConnectionSettings(node);
             client = new ElasticClient(connectionSettings);
         }
