@@ -44,6 +44,7 @@
             this.textboxField = new System.Windows.Forms.TextBox();
             this.searchBtn = new System.Windows.Forms.Button();
             this.deleteIndexBtn = new System.Windows.Forms.Button();
+            this.BulkButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // textBoxDoc
@@ -75,7 +76,6 @@
             this.textBoxIndex.Name = "textBoxIndex";
             this.textBoxIndex.Size = new System.Drawing.Size(100, 20);
             this.textBoxIndex.TabIndex = 3;
-            this.textBoxIndex.Text = "my_first_index";
             // 
             // label2
             // 
@@ -180,11 +180,22 @@
             this.deleteIndexBtn.UseVisualStyleBackColor = true;
             this.deleteIndexBtn.Click += new System.EventHandler(this.deleteIndexBtn_Click);
             // 
+            // BulkButton
+            // 
+            this.BulkButton.Location = new System.Drawing.Point(348, 117);
+            this.BulkButton.Name = "BulkButton";
+            this.BulkButton.Size = new System.Drawing.Size(100, 23);
+            this.BulkButton.TabIndex = 16;
+            this.BulkButton.Text = "Bulk insert";
+            this.BulkButton.UseVisualStyleBackColor = true;
+            this.BulkButton.Click += new System.EventHandler(this.BulkButton_Click);
+            // 
             // UserInterface
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(786, 589);
+            this.Controls.Add(this.BulkButton);
             this.Controls.Add(this.deleteIndexBtn);
             this.Controls.Add(this.searchBtn);
             this.Controls.Add(this.label4);
@@ -223,6 +234,7 @@
         private System.Windows.Forms.TextBox textboxField;
         private System.Windows.Forms.Button searchBtn;
         private System.Windows.Forms.Button deleteIndexBtn;
+        private System.Windows.Forms.Button BulkButton;
     }
 }
 

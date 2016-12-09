@@ -3,14 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MssqlDAO;
+using Model;
 
 namespace Controller
 {
     public class DataController
     {
-        public string GetData()
+        ProductDAO pDao;
+
+        public DataController()
         {
-            return null;
+            pDao = new ProductDAO();
+        }
+        public List<Product> GetData()
+        {
+            return pDao.GetProducts();
         }
 
         public string SaveData()

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Nest;
+using Model;
 
 namespace ElasticsearchDao
 {
@@ -67,6 +68,22 @@ namespace ElasticsearchDao
             }
 
             return result;
+        }
+
+        public string InsertBulk(List<Product> products, string index)
+        {
+            var descriptor = new BulkDescriptor();
+            descriptor.Index(new IndexName() { Name = index });
+
+            foreach (var product in products)
+            {
+                //For each Product in Product-list, index it to the given index
+                descriptor.Index<Product>(i => i.Document(product));
+            }
+
+            string response = client.Bulk(descriptor).ToString();
+
+            return response;
         }
     }
 }
