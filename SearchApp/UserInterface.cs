@@ -39,7 +39,7 @@ namespace SearchApp
         {
             if(textBoxDoc.Text != null && textBoxIndex.Text != null)
             {
-                responseBox.Text = elastic.AddDocToIndex(textBoxIndex.Text, textBoxDoc.Text);
+                responseBox.Text = elastic.InsertDataToElastic(textBoxIndex.Text);
             } 
         }
 

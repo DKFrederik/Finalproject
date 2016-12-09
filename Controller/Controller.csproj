@@ -78,6 +78,14 @@
       <Project>{ee99edd7-f3e7-45a0-90f4-4d6a18da2b8d}</Project>
       <Name>ElasticsearchDao</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Model\Model.csproj">
+      <Project>{dabd3e0e-53ab-44f4-a145-61d1cab51548}</Project>
+      <Name>Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MssqlDAO\MssqlDAO.csproj">
+      <Project>{2541d6d5-d70e-4d4e-adf7-d531495a5889}</Project>
+      <Name>MssqlDAO</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

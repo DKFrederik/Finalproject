@@ -5,6 +5,10 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
+using System.Runtime;
+using System.Runtime.Serialization.Json;
+using Model;
 
 namespace MssqlDAO
 {
@@ -116,5 +120,44 @@ namespace MssqlDAO
                 return null;
             }
         }
+
+        public List<Product> SelectAllXml()
+        {
+            List<Product> products = new List<Product>();
+            string sql = "SELECT * From Products"; //for xml auto
+            using (SqlCommand cmd = GetDbCommand(sql))
+            {
+                using (SqlDataReader r = cmd.ExecuteReader())
+                {
+                    try
+                    {
+                        while (r.Read())
+                        {
+                            Product p = new Product();
+                            p.Id = r.GetInt32("id");
+                            p.Name = r.GetString("name");
+                            p.Description = r.GetString("description");
+                            p.Categories.Add(r.GetString("cat1"));
+                            p.Categories.Add(r.GetString("cat2"));
+                            p.Categories.Add(r.GetString("cat3"));
+                            p.Categories.Add(r.GetString("cat4"));
+
+                            products.Add(p);
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        throw e;
+                    }
+                }
+                cmd.Parameters.Clear();
+            }
+            return products;   
+        }
+    }
+
+    public class Variable
+    {
+        public object Value { get; set; }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Model;
 using Nest;
 
 namespace ElasticsearchDao
@@ -46,11 +47,11 @@ namespace ElasticsearchDao
             return rc;
         }
 
-        public string AddDocToIndex(string targetIndex, Object doc)
+        public string AddDocToIndex(string targetIndex, List<Product> doc)
         {
-            var res = client.Index(doc, i => i.Index(targetIndex));
+            var result = client.Bulk(b => b.Index<List<Product>>(i => i.Document(doc)));
             //var res = client.LowLevel.Index<String>(targetIndex, "type-name", doc);
-            return res.ToString();
+            return result.CallDetails.ToString();
         }
 
         public string SimpleSearch(string searchTerm, string searchField)

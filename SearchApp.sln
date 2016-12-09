@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestMssqlDAO", "TestMssqlDA
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestElasticsearchDao", "TestElasticsearchDao\TestElasticsearchDao.csproj", "{90A32614-60D6-4563-8B99-DB347713FB9A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Model\Model.csproj", "{DABD3E0E-53AB-44F4-A145-61D1CAB51548}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{90A32614-60D6-4563-8B99-DB347713FB9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{90A32614-60D6-4563-8B99-DB347713FB9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{90A32614-60D6-4563-8B99-DB347713FB9A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DABD3E0E-53AB-44F4-A145-61D1CAB51548}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DABD3E0E-53AB-44F4-A145-61D1CAB51548}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DABD3E0E-53AB-44F4-A145-61D1CAB51548}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DABD3E0E-53AB-44F4-A145-61D1CAB51548}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
