@@ -48,13 +48,14 @@
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxDoc = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.SolrInsert = new System.Windows.Forms.Button();
-            this.solrIndicator = new System.Windows.Forms.TextBox();
-            this.solrResponseBox = new System.Windows.Forms.RichTextBox();
-            this.solrSearch = new System.Windows.Forms.Button();
-            this.solrQueryBox = new System.Windows.Forms.TextBox();
-            this.SolrDeleteAllButton = new System.Windows.Forms.Button();
             this.solrDeleteByQueryButton = new System.Windows.Forms.Button();
+            this.SolrDeleteAllButton = new System.Windows.Forms.Button();
+            this.solrQueryBox = new System.Windows.Forms.TextBox();
+            this.solrSearch = new System.Windows.Forms.Button();
+            this.solrResponseBox = new System.Windows.Forms.RichTextBox();
+            this.solrIndicator = new System.Windows.Forms.TextBox();
+            this.SolrInsert = new System.Windows.Forms.Button();
+            this.solrFacetBox = new System.Windows.Forms.RichTextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -72,7 +73,7 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(785, 586);
+            this.tabControl1.Size = new System.Drawing.Size(842, 586);
             this.tabControl1.TabIndex = 1;
             // 
             // tabPage1
@@ -230,6 +231,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.solrFacetBox);
             this.tabPage2.Controls.Add(this.solrDeleteByQueryButton);
             this.tabPage2.Controls.Add(this.SolrDeleteAllButton);
             this.tabPage2.Controls.Add(this.solrQueryBox);
@@ -240,62 +242,10 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(777, 560);
+            this.tabPage2.Size = new System.Drawing.Size(834, 560);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Solr";
             this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // SolrInsert
-            // 
-            this.SolrInsert.Location = new System.Drawing.Point(6, 61);
-            this.SolrInsert.Name = "SolrInsert";
-            this.SolrInsert.Size = new System.Drawing.Size(75, 23);
-            this.SolrInsert.TabIndex = 2;
-            this.SolrInsert.Text = "Insert";
-            this.SolrInsert.UseVisualStyleBackColor = true;
-            this.SolrInsert.Click += new System.EventHandler(this.SolrInsert_Click);
-            // 
-            // solrIndicator
-            // 
-            this.solrIndicator.Location = new System.Drawing.Point(11, 534);
-            this.solrIndicator.Name = "solrIndicator";
-            this.solrIndicator.Size = new System.Drawing.Size(32, 20);
-            this.solrIndicator.TabIndex = 3;
-            // 
-            // solrResponseBox
-            // 
-            this.solrResponseBox.Location = new System.Drawing.Point(3, 94);
-            this.solrResponseBox.Name = "solrResponseBox";
-            this.solrResponseBox.Size = new System.Drawing.Size(434, 434);
-            this.solrResponseBox.TabIndex = 4;
-            this.solrResponseBox.Text = "";
-            // 
-            // solrSearch
-            // 
-            this.solrSearch.Location = new System.Drawing.Point(6, 35);
-            this.solrSearch.Name = "solrSearch";
-            this.solrSearch.Size = new System.Drawing.Size(75, 23);
-            this.solrSearch.TabIndex = 5;
-            this.solrSearch.Text = "Search";
-            this.solrSearch.UseVisualStyleBackColor = true;
-            this.solrSearch.Click += new System.EventHandler(this.solrSearch_Click);
-            // 
-            // solrQueryBox
-            // 
-            this.solrQueryBox.Location = new System.Drawing.Point(6, 6);
-            this.solrQueryBox.Name = "solrQueryBox";
-            this.solrQueryBox.Size = new System.Drawing.Size(183, 20);
-            this.solrQueryBox.TabIndex = 6;
-            // 
-            // SolrDeleteAllButton
-            // 
-            this.SolrDeleteAllButton.Location = new System.Drawing.Point(87, 61);
-            this.SolrDeleteAllButton.Name = "SolrDeleteAllButton";
-            this.SolrDeleteAllButton.Size = new System.Drawing.Size(102, 23);
-            this.SolrDeleteAllButton.TabIndex = 7;
-            this.SolrDeleteAllButton.Text = "Delete All Doc";
-            this.SolrDeleteAllButton.UseVisualStyleBackColor = true;
-            this.SolrDeleteAllButton.Click += new System.EventHandler(this.SolrDeleteAllButton_Click);
             // 
             // solrDeleteByQueryButton
             // 
@@ -307,11 +257,71 @@
             this.solrDeleteByQueryButton.UseVisualStyleBackColor = true;
             this.solrDeleteByQueryButton.Click += new System.EventHandler(this.solrDeleteByQueryButton_Click);
             // 
+            // SolrDeleteAllButton
+            // 
+            this.SolrDeleteAllButton.Location = new System.Drawing.Point(87, 61);
+            this.SolrDeleteAllButton.Name = "SolrDeleteAllButton";
+            this.SolrDeleteAllButton.Size = new System.Drawing.Size(102, 23);
+            this.SolrDeleteAllButton.TabIndex = 7;
+            this.SolrDeleteAllButton.Text = "Delete All Doc";
+            this.SolrDeleteAllButton.UseVisualStyleBackColor = true;
+            this.SolrDeleteAllButton.Click += new System.EventHandler(this.SolrDeleteAllButton_Click);
+            // 
+            // solrQueryBox
+            // 
+            this.solrQueryBox.Location = new System.Drawing.Point(6, 6);
+            this.solrQueryBox.Name = "solrQueryBox";
+            this.solrQueryBox.Size = new System.Drawing.Size(183, 20);
+            this.solrQueryBox.TabIndex = 6;
+            // 
+            // solrSearch
+            // 
+            this.solrSearch.Location = new System.Drawing.Point(6, 35);
+            this.solrSearch.Name = "solrSearch";
+            this.solrSearch.Size = new System.Drawing.Size(75, 23);
+            this.solrSearch.TabIndex = 5;
+            this.solrSearch.Text = "Search";
+            this.solrSearch.UseVisualStyleBackColor = true;
+            this.solrSearch.Click += new System.EventHandler(this.solrSearch_Click);
+            // 
+            // solrResponseBox
+            // 
+            this.solrResponseBox.Location = new System.Drawing.Point(3, 94);
+            this.solrResponseBox.Name = "solrResponseBox";
+            this.solrResponseBox.Size = new System.Drawing.Size(434, 434);
+            this.solrResponseBox.TabIndex = 4;
+            this.solrResponseBox.Text = "";
+            // 
+            // solrIndicator
+            // 
+            this.solrIndicator.Location = new System.Drawing.Point(11, 534);
+            this.solrIndicator.Name = "solrIndicator";
+            this.solrIndicator.Size = new System.Drawing.Size(32, 20);
+            this.solrIndicator.TabIndex = 3;
+            // 
+            // SolrInsert
+            // 
+            this.SolrInsert.Location = new System.Drawing.Point(6, 61);
+            this.SolrInsert.Name = "SolrInsert";
+            this.SolrInsert.Size = new System.Drawing.Size(75, 23);
+            this.SolrInsert.TabIndex = 2;
+            this.SolrInsert.Text = "Insert";
+            this.SolrInsert.UseVisualStyleBackColor = true;
+            this.SolrInsert.Click += new System.EventHandler(this.SolrInsert_Click);
+            // 
+            // solrFacetBox
+            // 
+            this.solrFacetBox.Location = new System.Drawing.Point(443, 94);
+            this.solrFacetBox.Name = "solrFacetBox";
+            this.solrFacetBox.Size = new System.Drawing.Size(386, 434);
+            this.solrFacetBox.TabIndex = 9;
+            this.solrFacetBox.Text = "";
+            // 
             // UserInterface
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(786, 589);
+            this.ClientSize = new System.Drawing.Size(845, 589);
             this.Controls.Add(this.tabControl1);
             this.Name = "UserInterface";
             this.Text = "Form1";
@@ -351,6 +361,7 @@
         private System.Windows.Forms.Button solrSearch;
         private System.Windows.Forms.Button SolrDeleteAllButton;
         private System.Windows.Forms.Button solrDeleteByQueryButton;
+        private System.Windows.Forms.RichTextBox solrFacetBox;
     }
 }
 

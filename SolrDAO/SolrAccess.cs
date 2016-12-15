@@ -81,7 +81,7 @@ namespace SolrDAO
 
         public Object FacetSearch()
         {
-            var r = solr.FacetFieldQuery(new SolrFacetFieldQuery("cat1"));
+            var r = solr.FacetFieldQuery(new SolrFacetFieldQuery("_categories_"));
             return r;
         }
     }
