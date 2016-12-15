@@ -48,6 +48,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxDoc = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.solrFacetQuery = new System.Windows.Forms.TextBox();
             this.solrFacetButton = new System.Windows.Forms.Button();
             this.solrFacetBox = new System.Windows.Forms.RichTextBox();
             this.solrDeleteByQueryButton = new System.Windows.Forms.Button();
@@ -57,7 +58,6 @@
             this.solrResponseBox = new System.Windows.Forms.RichTextBox();
             this.solrIndicator = new System.Windows.Forms.TextBox();
             this.SolrInsert = new System.Windows.Forms.Button();
-            this.solrFacetQuery = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -80,21 +80,21 @@
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.BulkButton);
-            this.tabPage1.Controls.Add(this.deleteIndexBtn);
             this.tabPage1.Controls.Add(this.searchBtn);
-            this.tabPage1.Controls.Add(this.label4);
+            this.tabPage1.Controls.Add(this.deleteIndexBtn);
             this.tabPage1.Controls.Add(this.textboxField);
-            this.tabPage1.Controls.Add(this.label3);
             this.tabPage1.Controls.Add(this.textboxQueryTerm);
             this.tabPage1.Controls.Add(this.createIndexBtn);
             this.tabPage1.Controls.Add(this.clearButton);
-            this.tabPage1.Controls.Add(this.responseBox);
             this.tabPage1.Controls.Add(this.button1);
             this.tabPage1.Controls.Add(this.label2);
             this.tabPage1.Controls.Add(this.textBoxIndex);
             this.tabPage1.Controls.Add(this.label1);
             this.tabPage1.Controls.Add(this.textBoxDoc);
+            this.tabPage1.Controls.Add(this.responseBox);
+            this.tabPage1.Controls.Add(this.BulkButton);
+            this.tabPage1.Controls.Add(this.label4);
+            this.tabPage1.Controls.Add(this.label3);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -111,6 +111,7 @@
             this.BulkButton.TabIndex = 31;
             this.BulkButton.Text = "Bulk insert";
             this.BulkButton.UseVisualStyleBackColor = true;
+            this.BulkButton.Click += new System.EventHandler(this.BulkButton_Click);
             // 
             // deleteIndexBtn
             // 
@@ -120,6 +121,7 @@
             this.deleteIndexBtn.TabIndex = 30;
             this.deleteIndexBtn.Text = "Delete index";
             this.deleteIndexBtn.UseVisualStyleBackColor = true;
+            this.deleteIndexBtn.Click += new System.EventHandler(deleteIndexBtn_Click);
             // 
             // searchBtn
             // 
@@ -129,6 +131,7 @@
             this.searchBtn.TabIndex = 29;
             this.searchBtn.Text = "Search";
             this.searchBtn.UseVisualStyleBackColor = true;
+            this.searchBtn.Click += new System.EventHandler(searchBtn_Click);
             // 
             // label4
             // 
@@ -170,6 +173,7 @@
             this.createIndexBtn.TabIndex = 24;
             this.createIndexBtn.Text = "Create index";
             this.createIndexBtn.UseVisualStyleBackColor = true;
+            this.createIndexBtn.Click += new System.EventHandler(createIndexBtn_Click);
             // 
             // clearButton
             // 
@@ -179,6 +183,7 @@
             this.clearButton.TabIndex = 23;
             this.clearButton.Text = "Clear response field";
             this.clearButton.UseVisualStyleBackColor = true;
+            this.clearButton.Click += new System.EventHandler(this.ElasticClearResponseBox);
             // 
             // responseBox
             // 
@@ -198,6 +203,7 @@
             this.button1.TabIndex = 21;
             this.button1.Text = "Insert into index";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label2
             // 
@@ -250,6 +256,13 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Solr";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // solrFacetQuery
+            // 
+            this.solrFacetQuery.Location = new System.Drawing.Point(443, 3);
+            this.solrFacetQuery.Name = "solrFacetQuery";
+            this.solrFacetQuery.Size = new System.Drawing.Size(183, 20);
+            this.solrFacetQuery.TabIndex = 11;
             // 
             // solrFacetButton
             // 
@@ -330,13 +343,6 @@
             this.SolrInsert.Text = "Insert";
             this.SolrInsert.UseVisualStyleBackColor = true;
             this.SolrInsert.Click += new System.EventHandler(this.SolrInsert_Click);
-            // 
-            // solrFacetQuery
-            // 
-            this.solrFacetQuery.Location = new System.Drawing.Point(443, 3);
-            this.solrFacetQuery.Name = "solrFacetQuery";
-            this.solrFacetQuery.Size = new System.Drawing.Size(183, 20);
-            this.solrFacetQuery.TabIndex = 11;
             // 
             // UserInterface
             // 

@@ -9,6 +9,13 @@ namespace TestElasticsearchDao
     [TestClass]
     public class ElasticAccessTest
     {
+        private ElasticAccess e;
+
+        [TestInitialize]
+        public void Setup()
+        {
+            e = new ElasticAccess();
+        }
         [TestMethod]
         public void ElasticConnectionTest()
         {
@@ -17,6 +24,12 @@ namespace TestElasticsearchDao
             ElasticClient client = new ElasticClient(connectionSettings); ;
 
             Assert.IsTrue(client.CatMaster().CallDetails.Success);
+        }
+
+        [TestMethod]
+        public void TestFacet()
+        {
+            e.FacetedSearchCrap();
         }
     }
 }

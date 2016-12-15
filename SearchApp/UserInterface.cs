@@ -46,7 +46,7 @@ namespace SearchApp
             } 
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void ElasticClearResponseBox(object sender, EventArgs e)
         {
             responseBox.Text = "";
         }

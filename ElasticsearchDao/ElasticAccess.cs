@@ -85,5 +85,12 @@ namespace ElasticsearchDao
 
             return response;
         }
+
+        public void FacetedSearchCrap()
+        {
+            var r = client.Search<Product>(s => s.Aggregations(agg => agg.Terms(t => t.Field(p => p.cat1))));
+
+            double x = 2323 * 2323;
+        }
     }
 }
