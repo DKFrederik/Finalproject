@@ -40,5 +40,15 @@ namespace Controller
         {
             return solr.Search(query);
         }
+
+        public Dictionary<string, int> FacetSearchGetAll()
+        {
+            return solr.FacetSearchGetAll();
+        }
+
+        public List<Product> FacetSearchWithQuery(string term)
+        {
+            return solr.FacetSearchWithQuery(term);
+        }
     }
 }

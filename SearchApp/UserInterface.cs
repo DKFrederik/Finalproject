@@ -162,5 +162,43 @@ namespace SearchApp
             }
 
         }
+
+        private void solrFacetButton_Click(object sender, EventArgs e)
+        {
+            string boxString = "";
+            if (solrFacetQuery.Text.Length == 0)
+            {
+                Dictionary<string, int> res = solr.FacetSearchGetAll();
+                if (res.Count != 0)
+                {
+                    foreach (KeyValuePair<string, int> facet in res)
+                    {
+                        boxString += facet.Key + " (" + facet.Value + ")\n";
+                    }
+                }
+                else
+                {
+                    boxString = "FAILED!";
+                }
+            } else
+            {
+                List<Product> res = solr.FacetSearchWithQuery(solrFacetQuery.Text);
+                
+                foreach(Product p in res)
+                {
+                    boxString += p.ToString() + "\n";
+                }
+            }
+
+            solrFacetBox.Text = boxString;
+        }
+
+        private void solrFacetView_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+        }
+
+        private void node_AfterCheck(object sender, TreeViewEventArgs e)
+        {
+        }
     }
 }

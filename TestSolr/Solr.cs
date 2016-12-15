@@ -24,7 +24,7 @@ namespace TestSolr
         [TestMethod]
         public void TestFacet()
         {
-            var res = solr.FacetSearch();
+            var res = solr.FacetSearchGetAll();
         }
     }
 }

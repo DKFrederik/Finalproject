@@ -48,6 +48,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxDoc = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.solrFacetButton = new System.Windows.Forms.Button();
+            this.solrFacetBox = new System.Windows.Forms.RichTextBox();
             this.solrDeleteByQueryButton = new System.Windows.Forms.Button();
             this.SolrDeleteAllButton = new System.Windows.Forms.Button();
             this.solrQueryBox = new System.Windows.Forms.TextBox();
@@ -55,7 +57,7 @@
             this.solrResponseBox = new System.Windows.Forms.RichTextBox();
             this.solrIndicator = new System.Windows.Forms.TextBox();
             this.SolrInsert = new System.Windows.Forms.Button();
-            this.solrFacetBox = new System.Windows.Forms.RichTextBox();
+            this.solrFacetQuery = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -96,7 +98,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(777, 560);
+            this.tabPage1.Size = new System.Drawing.Size(834, 560);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Elastic";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -231,6 +233,8 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.solrFacetQuery);
+            this.tabPage2.Controls.Add(this.solrFacetButton);
             this.tabPage2.Controls.Add(this.solrFacetBox);
             this.tabPage2.Controls.Add(this.solrDeleteByQueryButton);
             this.tabPage2.Controls.Add(this.SolrDeleteAllButton);
@@ -246,6 +250,24 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Solr";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // solrFacetButton
+            // 
+            this.solrFacetButton.Location = new System.Drawing.Point(443, 35);
+            this.solrFacetButton.Name = "solrFacetButton";
+            this.solrFacetButton.Size = new System.Drawing.Size(75, 23);
+            this.solrFacetButton.TabIndex = 10;
+            this.solrFacetButton.Text = "Facet";
+            this.solrFacetButton.UseVisualStyleBackColor = true;
+            this.solrFacetButton.Click += new System.EventHandler(this.solrFacetButton_Click);
+            // 
+            // solrFacetBox
+            // 
+            this.solrFacetBox.Location = new System.Drawing.Point(443, 94);
+            this.solrFacetBox.Name = "solrFacetBox";
+            this.solrFacetBox.Size = new System.Drawing.Size(386, 434);
+            this.solrFacetBox.TabIndex = 9;
+            this.solrFacetBox.Text = "";
             // 
             // solrDeleteByQueryButton
             // 
@@ -309,13 +331,12 @@
             this.SolrInsert.UseVisualStyleBackColor = true;
             this.SolrInsert.Click += new System.EventHandler(this.SolrInsert_Click);
             // 
-            // solrFacetBox
+            // solrFacetQuery
             // 
-            this.solrFacetBox.Location = new System.Drawing.Point(443, 94);
-            this.solrFacetBox.Name = "solrFacetBox";
-            this.solrFacetBox.Size = new System.Drawing.Size(386, 434);
-            this.solrFacetBox.TabIndex = 9;
-            this.solrFacetBox.Text = "";
+            this.solrFacetQuery.Location = new System.Drawing.Point(443, 3);
+            this.solrFacetQuery.Name = "solrFacetQuery";
+            this.solrFacetQuery.Size = new System.Drawing.Size(183, 20);
+            this.solrFacetQuery.TabIndex = 11;
             // 
             // UserInterface
             // 
@@ -362,6 +383,8 @@
         private System.Windows.Forms.Button SolrDeleteAllButton;
         private System.Windows.Forms.Button solrDeleteByQueryButton;
         private System.Windows.Forms.RichTextBox solrFacetBox;
+        private System.Windows.Forms.Button solrFacetButton;
+        private System.Windows.Forms.TextBox solrFacetQuery;
     }
 }
 

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SolrNet;
 using SolrNet.Commands;
+using SolrNet.Commands.Parameters;
 using Model;
 using Microsoft.Practices.ServiceLocation;
 
@@ -79,10 +80,27 @@ namespace SolrDAO
             solr.Commit();
         }
 
-        public Object FacetSearch()
+        public Dictionary<string, int> FacetSearchGetAll()
         {
+            Dictionary<string, int> d = new Dictionary<string, int>();
             var r = solr.FacetFieldQuery(new SolrFacetFieldQuery("_categories_"));
+
+            foreach (var i in r)
+            {
+                d.Add(i.Key, i.Value);
+            }
+            return d;
+        }
+
+        public List<Product> FacetSearchWithQuery(string term)
+        {
+            List<Product> r = solr.Query("_categories_:" + term, new QueryOptions()
+            {
+                Rows = 200
+            });
+
             return r;
         }
     }
+
 }
