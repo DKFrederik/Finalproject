@@ -8,17 +8,19 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Controller;
+using Model;
 
 namespace SearchApp
 {
     public partial class UserInterface : Form
     {
-        private ElasticCtr elastic; 
+        private ElasticCtr elastic;
+        private SolrCtr solr;
         public UserInterface()
         {
             InitializeComponent();
             elastic = new ElasticCtr();
-
+            solr = new SolrCtr();
         }
 
         private void Form13_Load(object sender, EventArgs e)
@@ -100,6 +102,65 @@ namespace SearchApp
         {
             string response = elastic.InsertBulk(textBoxIndex.Text);
             responseBox.Text = response;
+        }
+
+        private void SolrInsert_Click(object sender, EventArgs e)
+        {
+            string res = solr.BulkInsert();
+            if (res.Equals("0"))
+            {
+                solrResponseBox.Text = "Success!";
+            }
+            else
+            {
+                solrResponseBox.Text = res;
+            }
+        }
+
+        private void solrSearch_Click(object sender, EventArgs e)
+        {
+            string res = "";
+            List<Product> products = solr.Search(solrQueryBox.Text);
+            if (products != null)
+            {
+                 foreach(Product p in products)
+                {
+                    res += p.ToString() + "\n";
+                }
+            }
+            else
+            {
+                res = "Returned 'Null'.. So shit didnt work!";
+            }
+            solrResponseBox.Text = res;
+
+        }
+
+        private void SolrDeleteAllButton_Click(object sender, EventArgs e)
+        {
+            string res = solr.DeleteAllDocuments();
+            if (res.Equals("0"))
+            {
+                solrResponseBox.Text = "Deleted everything muhahah!";
+            }
+            else
+            {
+                solrResponseBox.Text = res;
+            }
+        }
+
+        private void solrDeleteByQueryButton_Click(object sender, EventArgs e)
+        {
+            string res = solr.DeleteDocByQuery(solrQueryBox.Text);
+            if (res.Equals("0"))
+            {
+                solrResponseBox.Text = "Deleted!";
+            }
+            else
+            {
+                solrResponseBox.Text = res;
+            }
+
         }
     }
 }

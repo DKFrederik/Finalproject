@@ -10,11 +10,11 @@ namespace MssqlDAO
 {
     public class DBAccess
     {
-        //public static string connectionString = @"server=NICHLAS-PC\SQLEXPRESS;" +
-        //                              "Trusted_Connection=True;" +
-        //                              "MultipleActiveResultSets=True;" +
-        //                              "database=Perfion; " +
-        //                              "connection timeout=10";
+        public static string connectionString = @"server=NICHLAS-PC\SQLEXPRESS;" +
+                                      "Trusted_Connection=True;" +
+                                      "MultipleActiveResultSets=True;" +
+                                      "database=Perfion; " +
+                                      "connection timeout=10";
 
         //public static string connectionString = @"server=FREDERIK-LAPTOP\SQLEXPRESS;" +
         //                               "Trusted_Connection=True;" +
@@ -28,17 +28,17 @@ namespace MssqlDAO
         //                               "database=Perfion; " +
         //                               "connection timeout=10";     
 
-       //public static string connectionString = @"server=CLAUSJØRGENSEN\SQLEXPRESS;" +
-       //                                  "Trusted_Connection=True;" +
-       //                                  "MultipleActiveResultSets=True;" +
-       //                                  "database=Perfion; " +
-       //                                  "connection timeout=10";
+        //public static string connectionString = @"server=CLAUSJØRGENSEN\SQLEXPRESS;" +
+        //                                  "Trusted_Connection=True;" +
+        //                                  "MultipleActiveResultSets=True;" +
+        //                                  "database=Perfion; " +
+        //                                  "connection timeout=10";
 
-        public static string connectionString = @"server=laptop-o1i4aa38\finalserver;" +
-                                       "trusted_connection=true;" +
-                                       "multipleactiveresultsets=true;" +
-                                       "database=perfion; " +
-                                       "connection timeout=10";
+        //public static string connectionString = @"server=laptop-o1i4aa38\finalserver;" +
+        //                               "trusted_connection=true;" +
+        //                               "multipleactiveresultsets=true;" +
+        //                               "database=perfion; " +
+        //                               "connection timeout=10";
 
         private SqlConnection dbconn;
 
