@@ -30,6 +30,15 @@ namespace Controller
         {
             return null;
         }
+        public void createFullTextIndex(string catalogName)
+        {
+            pDao.createFullTextIndex(catalogName);
+        }
+
+        public List<Product> searchFullText(List<string> wordList)
+        {
+            return pDao.Search(wordList);
+        }
 
     }
 }

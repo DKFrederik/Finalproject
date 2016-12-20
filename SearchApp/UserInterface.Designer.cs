@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.SQLTab = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.BulkButton = new System.Windows.Forms.Button();
             this.deleteIndexBtn = new System.Windows.Forms.Button();
@@ -48,6 +48,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxDoc = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.solrFacetBox = new System.Windows.Forms.RichTextBox();
             this.solrDeleteByQueryButton = new System.Windows.Forms.Button();
             this.SolrDeleteAllButton = new System.Windows.Forms.Button();
             this.solrQueryBox = new System.Windows.Forms.TextBox();
@@ -55,10 +56,15 @@
             this.solrResponseBox = new System.Windows.Forms.RichTextBox();
             this.solrIndicator = new System.Windows.Forms.TextBox();
             this.SolrInsert = new System.Windows.Forms.Button();
-            this.solrFacetBox = new System.Windows.Forms.RichTextBox();
-            this.tabControl1.SuspendLayout();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.createIndexSQL = new System.Windows.Forms.Button();
+            this.sqlResponseBox = new System.Windows.Forms.RichTextBox();
+            this.sqlSearchBox = new System.Windows.Forms.TextBox();
+            this.searchSQL = new System.Windows.Forms.Button();
+            this.SQLTab.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.tabPage3.SuspendLayout();
             this.SuspendLayout();
             // 
             // contextMenuStrip1
@@ -66,15 +72,16 @@
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
-            // tabControl1
+            // SQLTab
             // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(0, 0);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(842, 586);
-            this.tabControl1.TabIndex = 1;
+            this.SQLTab.Controls.Add(this.tabPage1);
+            this.SQLTab.Controls.Add(this.tabPage2);
+            this.SQLTab.Controls.Add(this.tabPage3);
+            this.SQLTab.Location = new System.Drawing.Point(0, 0);
+            this.SQLTab.Name = "SQLTab";
+            this.SQLTab.SelectedIndex = 0;
+            this.SQLTab.Size = new System.Drawing.Size(842, 586);
+            this.SQLTab.TabIndex = 1;
             // 
             // tabPage1
             // 
@@ -96,7 +103,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(777, 560);
+            this.tabPage1.Size = new System.Drawing.Size(834, 560);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Elastic";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -118,6 +125,7 @@
             this.deleteIndexBtn.TabIndex = 30;
             this.deleteIndexBtn.Text = "Delete index";
             this.deleteIndexBtn.UseVisualStyleBackColor = true;
+            this.deleteIndexBtn.Click += new System.EventHandler(this.deleteIndexBtn_Click_1);
             // 
             // searchBtn
             // 
@@ -247,6 +255,14 @@
             this.tabPage2.Text = "Solr";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // solrFacetBox
+            // 
+            this.solrFacetBox.Location = new System.Drawing.Point(443, 94);
+            this.solrFacetBox.Name = "solrFacetBox";
+            this.solrFacetBox.Size = new System.Drawing.Size(386, 434);
+            this.solrFacetBox.TabIndex = 9;
+            this.solrFacetBox.Text = "";
+            // 
             // solrDeleteByQueryButton
             // 
             this.solrDeleteByQueryButton.Location = new System.Drawing.Point(87, 35);
@@ -309,34 +325,76 @@
             this.SolrInsert.UseVisualStyleBackColor = true;
             this.SolrInsert.Click += new System.EventHandler(this.SolrInsert_Click);
             // 
-            // solrFacetBox
+            // tabPage3
             // 
-            this.solrFacetBox.Location = new System.Drawing.Point(443, 94);
-            this.solrFacetBox.Name = "solrFacetBox";
-            this.solrFacetBox.Size = new System.Drawing.Size(386, 434);
-            this.solrFacetBox.TabIndex = 9;
-            this.solrFacetBox.Text = "";
+            this.tabPage3.Controls.Add(this.searchSQL);
+            this.tabPage3.Controls.Add(this.sqlSearchBox);
+            this.tabPage3.Controls.Add(this.sqlResponseBox);
+            this.tabPage3.Controls.Add(this.createIndexSQL);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(834, 560);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "SQL";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // createIndexSQL
+            // 
+            this.createIndexSQL.Location = new System.Drawing.Point(9, 101);
+            this.createIndexSQL.Name = "createIndexSQL";
+            this.createIndexSQL.Size = new System.Drawing.Size(75, 23);
+            this.createIndexSQL.TabIndex = 0;
+            this.createIndexSQL.Text = "Create index";
+            this.createIndexSQL.UseVisualStyleBackColor = true;
+            // 
+            // sqlResponseBox
+            // 
+            this.sqlResponseBox.Location = new System.Drawing.Point(6, 130);
+            this.sqlResponseBox.Name = "sqlResponseBox";
+            this.sqlResponseBox.Size = new System.Drawing.Size(349, 424);
+            this.sqlResponseBox.TabIndex = 1;
+            this.sqlResponseBox.Text = "";
+            // 
+            // sqlSearchBox
+            // 
+            this.sqlSearchBox.Location = new System.Drawing.Point(8, 16);
+            this.sqlSearchBox.Name = "sqlSearchBox";
+            this.sqlSearchBox.Size = new System.Drawing.Size(217, 20);
+            this.sqlSearchBox.TabIndex = 2;
+            // 
+            // searchSQL
+            // 
+            this.searchSQL.Location = new System.Drawing.Point(9, 72);
+            this.searchSQL.Name = "searchSQL";
+            this.searchSQL.Size = new System.Drawing.Size(75, 23);
+            this.searchSQL.TabIndex = 3;
+            this.searchSQL.Text = "Search";
+            this.searchSQL.UseVisualStyleBackColor = true;
+            this.searchSQL.Click += new System.EventHandler(this.searchSQL_Click);
             // 
             // UserInterface
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(845, 589);
-            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.SQLTab);
             this.Name = "UserInterface";
             this.Text = "Form1";
-            this.tabControl1.ResumeLayout(false);
+            this.SQLTab.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabControl SQLTab;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.Button BulkButton;
         private System.Windows.Forms.Button deleteIndexBtn;
@@ -362,6 +420,11 @@
         private System.Windows.Forms.Button SolrDeleteAllButton;
         private System.Windows.Forms.Button solrDeleteByQueryButton;
         private System.Windows.Forms.RichTextBox solrFacetBox;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.Button createIndexSQL;
+        private System.Windows.Forms.RichTextBox sqlResponseBox;
+        private System.Windows.Forms.Button searchSQL;
+        private System.Windows.Forms.TextBox sqlSearchBox;
     }
 }
 
