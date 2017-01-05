@@ -16,19 +16,21 @@ namespace ElasticsearchDao
 
         public ElasticAccess()
         {
-            node = new Uri("localhost:9200");
             node = new Uri("http://localhost:9200/");
             connectionSettings = new ConnectionSettings(node);
             client = new ElasticClient(connectionSettings);
         }
 
-        public int CreateIndex(string name)
+        public int CreateIndex(string name, Language language)
         {
             int rc = -1;
 
             if(!client.IndexExists(name).Exists)
             {
-                var createIndex = client.CreateIndex(name, c => c.Mappings(m => m.Map<Product>(p => p.AutoMap())));
+                var createIndex = client.CreateIndex(name, c => c
+                        .Mappings(m => m
+                            .Map<Product>(p => p
+                                .AutoMap())));
                 rc = 0;
             }
 
