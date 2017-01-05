@@ -57,10 +57,13 @@
             this.solrIndicator = new System.Windows.Forms.TextBox();
             this.SolrInsert = new System.Windows.Forms.Button();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.createIndexSQL = new System.Windows.Forms.Button();
-            this.sqlResponseBox = new System.Windows.Forms.RichTextBox();
-            this.sqlSearchBox = new System.Windows.Forms.TextBox();
+            this.facet1 = new System.Windows.Forms.CheckedListBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.searchSQL = new System.Windows.Forms.Button();
+            this.sqlSearchBox = new System.Windows.Forms.TextBox();
+            this.sqlResponseBox = new System.Windows.Forms.RichTextBox();
+            this.createIndexSQL = new System.Windows.Forms.Button();
+            this.BulkText = new System.Windows.Forms.Button();
             this.SQLTab.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -85,6 +88,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.BulkText);
             this.tabPage1.Controls.Add(this.BulkButton);
             this.tabPage1.Controls.Add(this.deleteIndexBtn);
             this.tabPage1.Controls.Add(this.searchBtn);
@@ -327,6 +331,8 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.facet1);
+            this.tabPage3.Controls.Add(this.label5);
             this.tabPage3.Controls.Add(this.searchSQL);
             this.tabPage3.Controls.Add(this.sqlSearchBox);
             this.tabPage3.Controls.Add(this.sqlResponseBox);
@@ -339,29 +345,24 @@
             this.tabPage3.Text = "SQL";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // createIndexSQL
+            // facet1
             // 
-            this.createIndexSQL.Location = new System.Drawing.Point(9, 101);
-            this.createIndexSQL.Name = "createIndexSQL";
-            this.createIndexSQL.Size = new System.Drawing.Size(75, 23);
-            this.createIndexSQL.TabIndex = 0;
-            this.createIndexSQL.Text = "Create index";
-            this.createIndexSQL.UseVisualStyleBackColor = true;
+            this.facet1.FormattingEnabled = true;
+            this.facet1.Location = new System.Drawing.Point(376, 395);
+            this.facet1.Name = "facet1";
+            this.facet1.Size = new System.Drawing.Size(178, 154);
+            this.facet1.TabIndex = 5;
+            this.facet1.SelectedIndexChanged += new System.EventHandler(this.facet1_SelectedIndexChanged);
             // 
-            // sqlResponseBox
+            // label5
             // 
-            this.sqlResponseBox.Location = new System.Drawing.Point(6, 130);
-            this.sqlResponseBox.Name = "sqlResponseBox";
-            this.sqlResponseBox.Size = new System.Drawing.Size(349, 424);
-            this.sqlResponseBox.TabIndex = 1;
-            this.sqlResponseBox.Text = "";
-            // 
-            // sqlSearchBox
-            // 
-            this.sqlSearchBox.Location = new System.Drawing.Point(8, 16);
-            this.sqlSearchBox.Name = "sqlSearchBox";
-            this.sqlSearchBox.Size = new System.Drawing.Size(217, 20);
-            this.sqlSearchBox.TabIndex = 2;
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(373, 369);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(39, 13);
+            this.label5.TabIndex = 4;
+            this.label5.Text = "Facets";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // searchSQL
             // 
@@ -372,6 +373,40 @@
             this.searchSQL.Text = "Search";
             this.searchSQL.UseVisualStyleBackColor = true;
             this.searchSQL.Click += new System.EventHandler(this.searchSQL_Click);
+            // 
+            // sqlSearchBox
+            // 
+            this.sqlSearchBox.Location = new System.Drawing.Point(8, 16);
+            this.sqlSearchBox.Name = "sqlSearchBox";
+            this.sqlSearchBox.Size = new System.Drawing.Size(217, 20);
+            this.sqlSearchBox.TabIndex = 2;
+            // 
+            // sqlResponseBox
+            // 
+            this.sqlResponseBox.Location = new System.Drawing.Point(6, 130);
+            this.sqlResponseBox.Name = "sqlResponseBox";
+            this.sqlResponseBox.Size = new System.Drawing.Size(349, 424);
+            this.sqlResponseBox.TabIndex = 1;
+            this.sqlResponseBox.Text = "";
+            // 
+            // createIndexSQL
+            // 
+            this.createIndexSQL.Location = new System.Drawing.Point(9, 101);
+            this.createIndexSQL.Name = "createIndexSQL";
+            this.createIndexSQL.Size = new System.Drawing.Size(75, 23);
+            this.createIndexSQL.TabIndex = 0;
+            this.createIndexSQL.Text = "Create index";
+            this.createIndexSQL.UseVisualStyleBackColor = true;
+            // 
+            // BulkText
+            // 
+            this.BulkText.Location = new System.Drawing.Point(479, 116);
+            this.BulkText.Name = "BulkText";
+            this.BulkText.Size = new System.Drawing.Size(75, 23);
+            this.BulkText.TabIndex = 32;
+            this.BulkText.Text = "BulkTest";
+            this.BulkText.UseVisualStyleBackColor = true;
+            this.BulkText.Click += new System.EventHandler(this.BulkText_Click);
             // 
             // UserInterface
             // 
@@ -425,6 +460,9 @@
         private System.Windows.Forms.RichTextBox sqlResponseBox;
         private System.Windows.Forms.Button searchSQL;
         private System.Windows.Forms.TextBox sqlSearchBox;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.CheckedListBox facet1;
+        private System.Windows.Forms.Button BulkText;
     }
 }
 

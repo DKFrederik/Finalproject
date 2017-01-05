@@ -21,6 +21,11 @@ namespace Controller
             return pDao.GetProducts();
         }
 
+        public List<Text> GetText()
+        {
+            return pDao.GetText();
+        }
+
         public string SaveData()
         {
             return null;

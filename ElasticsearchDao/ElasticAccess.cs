@@ -85,5 +85,21 @@ namespace ElasticsearchDao
 
             return response;
         }
+
+        public string InsertBulkText(List<Text> texts, string index)
+        {
+            var descriptor = new BulkDescriptor();
+            descriptor.Index(new IndexName() { Name = index });
+
+            foreach (var text in texts)
+            {
+                //For each Product in Product-list, index it to the given index
+                descriptor.Index<Text>(i => i.Document(text));
+            }
+
+            string response = client.Bulk(descriptor).ToString();
+
+            return response;
+        }
     }
 }

@@ -37,7 +37,7 @@ namespace MssqlDAO
         public static string connectionString = @"server=laptop-o1i4aa38\Perfion;" +
                                        "trusted_connection=true;" +
                                        "multipleactiveresultsets=true;" +
-                                       "database=perfion; " +
+                                       "database=TestDBTilClaus2; " +
                                        "connection timeout=10";
 
         private SqlConnection dbconn;

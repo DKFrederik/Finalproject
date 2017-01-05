@@ -183,5 +183,21 @@ namespace SearchApp
 
             sqlResponseBox.Text = response;
         }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void facet1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BulkText_Click(object sender, EventArgs e)
+        {
+            string response = elastic.InsertBulkText(textBoxIndex.Text);
+            responseBox.Text = response;
+        }
     }
 }

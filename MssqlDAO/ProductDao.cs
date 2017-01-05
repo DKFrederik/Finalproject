@@ -59,13 +59,52 @@ namespace MssqlDAO
             return products;
         }
 
+
+        public List<Text> GetText()
+        {
+
+            //SQL string for fetching data from MSSQL database
+            string sql = "SELECT * FROM Products";
+            //Create a empty list of products
+            var texts = new List<Text>();
+
+            using (SqlCommand cmd = dba.GetDbCommand(sql))
+            {
+                //DataReader
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    try
+                    {
+                        while (reader.Read())
+                        {
+                            var p = new Text()
+                            {
+                                id = reader.GetInt32("ItemID"),
+                                text = reader.GetString("Text"),
+                            };
+                            //Add every Product to List
+                            texts.Add(p);
+                        }
+                    }
+
+                    catch
+                    {
+                        Console.WriteLine("An exception occurred!");
+                    }
+                }
+                cmd.Parameters.Clear();
+            }
+            double x = 1;
+            return texts;
+        }
+
         public void createFullTextIndex(string catalogName)
         {
             //Rowcount to be returned from executed sql command.
             int rc = -1;
 
             //SQL string for creating Full text catalog and index MSSQL database
-            string sql = " CREATE FULLTEXT INDEX ON Products(description) KEY INDEX " + getIndexId();
+            string sql = "CREATE FULLTEXT INDEX ON Products(description) KEY INDEX " + getIndexId();
 
 
             using (SqlCommand cmd = dba.GetDbCommand(sql))

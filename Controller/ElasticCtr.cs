@@ -55,5 +55,10 @@ namespace Controller
 
             return elastic.InsertBulk(dCtr.GetData(), index);
         }
+
+        public string InsertBulkText(string index)
+        {
+            return elastic.InsertBulkText(dCtr.GetText(), index);
+        }
     }
 }
