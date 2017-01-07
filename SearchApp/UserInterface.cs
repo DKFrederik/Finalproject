@@ -42,10 +42,10 @@ namespace SearchApp
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if(textBoxDoc.Text != null && textBoxIndex.Text != null)
+            if (textBoxDoc.Text != null && textBoxIndex.Text != null)
             {
                 responseBox.Text = elastic.AddDocToIndex(textBoxIndex.Text, textBoxDoc.Text);
-            } 
+            }
         }
 
         private void ElasticClearResponseBox(object sender, EventArgs e)
@@ -55,7 +55,7 @@ namespace SearchApp
 
         private void createIndexBtn_Click(object sender, EventArgs e)
         {
-            if(elastic.CreateIndex(textBoxIndex.Text) != -1)
+            if (elastic.CreateIndex(textBoxIndex.Text) != -1)
             {
                 responseBox.Text = "Created. Maybe";
             }
@@ -90,7 +90,7 @@ namespace SearchApp
 
         private void deleteIndexBtn_Click(object sender, EventArgs e)
         {
-            if(elastic.DeleteIndex(textBoxIndex.Text) != -1)
+            if (elastic.DeleteIndex(textBoxIndex.Text) != -1)
             {
                 responseBox.Text = "Deleted! Maybe.";
             }
@@ -125,7 +125,7 @@ namespace SearchApp
             List<Product> products = solr.Search(solrQueryBox.Text);
             if (products != null)
             {
-                 foreach(Product p in products)
+                foreach (Product p in products)
                 {
                     res += p.ToString() + "\n";
                 }
@@ -182,11 +182,12 @@ namespace SearchApp
                 {
                     boxString = "FAILED!";
                 }
-            } else
+            }
+            else
             {
                 List<Product> res = solr.FacetSearchWithQuery(solrFacetQuery.Text);
-                
-                foreach(Product p in res)
+
+                foreach (Product p in res)
                 {
                     boxString += p.ToString() + "\n";
                 }
@@ -199,11 +200,15 @@ namespace SearchApp
         {
         }
 
-        }
-
         private void deleteIndexBtn_Click_1(object sender, EventArgs e)
         {
-            dCtr.createFullTextIndex("Perfion");
+            if(elastic.DeleteIndex(textBoxIndex.Text) > -1)
+            {
+                responseBox.Text = "success";
+            } else
+            {
+                responseBox.Text = "Failed";
+            }
         }
 
         private void searchSQL_Click(object sender, EventArgs e)
@@ -234,6 +239,11 @@ namespace SearchApp
         {
             string response = elastic.InsertBulkText(textBoxIndex.Text);
             responseBox.Text = response;
+        }
+
+        private void createIndexSQL_Click(object sender, EventArgs e)
+        {
+            dCtr.createFullTextIndex("Perfion");
         }
     }
 }

@@ -29,7 +29,6 @@ namespace TestElasticsearchDao
         [TestMethod]
         public void TestFacet()
         {
-            e.FacetedSearchCrap();
         }
     }
 }
