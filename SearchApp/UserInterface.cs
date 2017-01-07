@@ -245,5 +245,6 @@ namespace SearchApp
         {
             dCtr.createFullTextIndex("Perfion");
         }
+
     }
 }

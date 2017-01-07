@@ -29,6 +29,7 @@ namespace ElasticsearchDao
             if(!client.IndexExists(name).Exists)
             {
                 var createIndex = client.CreateIndex(name, c => c.Mappings(m => m.Map<Product>(p => p.AutoMap())));
+
                 rc = 0;
             }
 

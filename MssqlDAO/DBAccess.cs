@@ -10,11 +10,11 @@ namespace MssqlDAO
 {
     public class DBAccess
     {
-        //public static string connectionString = @"server=NICHLAS-PC\SQLEXPRESS;" +
-        //                              "Trusted_Connection=True;" +
-        //                              "MultipleActiveResultSets=True;" +
-        //                              "database=Perfion; " +
-        //                              "connection timeout=10";
+        public static string connectionString = @"server=NICHLAS-PC\SQLEXPRESS;" +
+                                      "Trusted_Connection=True;" +
+                                      "MultipleActiveResultSets=True;" +
+                                      "database=Perfion; " +
+                                      "connection timeout=10";
 
         //public static string connectionString = @"server=FREDERIK-LAPTOP\SQLEXPRESS;" +
         //                               "Trusted_Connection=True;" +
@@ -22,11 +22,11 @@ namespace MssqlDAO
         //                               "database=Perfion; " +
         //                               "connection timeout=10";
 
-        public static string connectionString = @"server=CLAUS-PC\SQLEXPRESS;" +
-                                       "Trusted_Connection=True;" +
-                                       "MultipleActiveResultSets=True;" +
-                                       "database=Perfion; " +
-                                       "connection timeout=10";
+        //public static string connectionString = @"server=CLAUS-PC\SQLEXPRESS;" +
+        //                               "Trusted_Connection=True;" +
+        //                               "MultipleActiveResultSets=True;" +
+        //                               "database=Perfion; " +
+        //                               "connection timeout=10";
 
         //public static string connectionString = @"server=CLAUSJØRGENSEN\SQLEXPRESS;" +
         //                                  "Trusted_Connection=True;" +

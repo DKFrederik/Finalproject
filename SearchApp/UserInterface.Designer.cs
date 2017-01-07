@@ -35,9 +35,8 @@ namespace SearchApp
             this.SQLTab = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.BulkText = new System.Windows.Forms.Button();
-            this.BulkButton = new System.Windows.Forms.Button();
-            this.deleteIndexBtn = new System.Windows.Forms.Button();
             this.searchBtn = new System.Windows.Forms.Button();
+            this.deleteIndexBtn = new System.Windows.Forms.Button();
             this.textboxField = new System.Windows.Forms.TextBox();
             this.textboxQueryTerm = new System.Windows.Forms.TextBox();
             this.createIndexBtn = new System.Windows.Forms.Button();
@@ -48,6 +47,7 @@ namespace SearchApp
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxDoc = new System.Windows.Forms.TextBox();
             this.responseBox = new System.Windows.Forms.RichTextBox();
+            this.BulkButton = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -67,6 +67,7 @@ namespace SearchApp
             this.sqlSearchBox = new System.Windows.Forms.TextBox();
             this.sqlResponseBox = new System.Windows.Forms.RichTextBox();
             this.createIndexSQL = new System.Windows.Forms.Button();
+            this.solrFacetQuery = new System.Windows.Forms.TextBox();
             this.SQLTab.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -125,15 +126,15 @@ namespace SearchApp
             this.BulkText.UseVisualStyleBackColor = true;
             this.BulkText.Click += new System.EventHandler(this.BulkText_Click);
             // 
-            // BulkButton
+            // searchBtn
             // 
-            this.BulkButton.Location = new System.Drawing.Point(343, 116);
-            this.BulkButton.Name = "BulkButton";
-            this.BulkButton.Size = new System.Drawing.Size(100, 23);
-            this.BulkButton.TabIndex = 31;
-            this.BulkButton.Text = "Bulk insert";
-            this.BulkButton.UseVisualStyleBackColor = true;
-            this.BulkButton.Click += new System.EventHandler(this.BulkButton_Click);
+            this.searchBtn.Location = new System.Drawing.Point(343, 66);
+            this.searchBtn.Name = "searchBtn";
+            this.searchBtn.Size = new System.Drawing.Size(100, 29);
+            this.searchBtn.TabIndex = 29;
+            this.searchBtn.Text = "Search";
+            this.searchBtn.UseVisualStyleBackColor = true;
+            this.searchBtn.Click += new System.EventHandler(this.searchBtn_Click);
             // 
             // deleteIndexBtn
             // 
@@ -144,16 +145,6 @@ namespace SearchApp
             this.deleteIndexBtn.Text = "Delete index";
             this.deleteIndexBtn.UseVisualStyleBackColor = true;
             this.deleteIndexBtn.Click += new System.EventHandler(this.deleteIndexBtn_Click_1);
-            // 
-            // searchBtn
-            // 
-            this.searchBtn.Location = new System.Drawing.Point(343, 66);
-            this.searchBtn.Name = "searchBtn";
-            this.searchBtn.Size = new System.Drawing.Size(100, 29);
-            this.searchBtn.TabIndex = 29;
-            this.searchBtn.Text = "Search";
-            this.searchBtn.UseVisualStyleBackColor = true;
-            this.searchBtn.Click += new System.EventHandler(this.searchBtn_Click);
             // 
             // textboxField
             // 
@@ -241,6 +232,16 @@ namespace SearchApp
             this.responseBox.TabIndex = 22;
             this.responseBox.Text = "";
             // 
+            // BulkButton
+            // 
+            this.BulkButton.Location = new System.Drawing.Point(343, 116);
+            this.BulkButton.Name = "BulkButton";
+            this.BulkButton.Size = new System.Drawing.Size(100, 23);
+            this.BulkButton.TabIndex = 31;
+            this.BulkButton.Text = "Bulk insert";
+            this.BulkButton.UseVisualStyleBackColor = true;
+            this.BulkButton.Click += new System.EventHandler(this.BulkButton_Click);
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -261,6 +262,7 @@ namespace SearchApp
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.solrFacetQuery);
             this.tabPage2.Controls.Add(this.solrFacetButton);
             this.tabPage2.Controls.Add(this.solrFacetBox);
             this.tabPage2.Controls.Add(this.solrDeleteByQueryButton);
@@ -428,6 +430,13 @@ namespace SearchApp
             this.createIndexSQL.UseVisualStyleBackColor = true;
             this.createIndexSQL.Click += new System.EventHandler(this.createIndexSQL_Click);
             // 
+            // solrFacetQuery
+            // 
+            this.solrFacetQuery.Location = new System.Drawing.Point(443, 9);
+            this.solrFacetQuery.Name = "solrFacetQuery";
+            this.solrFacetQuery.Size = new System.Drawing.Size(100, 20);
+            this.solrFacetQuery.TabIndex = 11;
+            // 
             // UserInterface
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -484,8 +493,8 @@ namespace SearchApp
         private System.Windows.Forms.CheckedListBox facet1;
         private System.Windows.Forms.Button BulkText;
         private Button solrFacetButton;
+        private TextBox solrFacetQuery;
 
-        public TextBox solrFacetQuery { get; private set; }
     }
 }
 

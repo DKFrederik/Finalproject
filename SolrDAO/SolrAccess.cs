@@ -15,12 +15,16 @@ namespace SolrDAO
     {
 
         private ISolrOperations<Product> solr;
+
         public SolrAccess()
         {
             Startup.Init<Product>("http://localhost:8983/solr/newCore");
             solr = ServiceLocator.Current.GetInstance<ISolrOperations<Product>>();
         }
 
+        /**
+         * Inserts data in bulk.
+         **/
         public string BulkInsert(List<Product> products)
         {
             string res = "Didnt run..";
@@ -30,7 +34,7 @@ namespace SolrDAO
                 res = solr.AddRange(products).Status.ToString();
                 Commit();
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 solr.Rollback();
                 res = e.ToString();
@@ -38,33 +42,37 @@ namespace SolrDAO
 
             return res;
         }
-
+        // Delete a singe document matched by the query
         public string DeleteDoc(string q)
         {
             string res = "Didnt run..";
             try
             {
                 SolrQuery query = new SolrQuery(q);
+                
                 res = solr.Delete(query).Status.ToString();
                 Commit();
-            } catch (Exception e)
+            }
+            catch (Exception e)
             {
                 solr.Rollback();
                 res = e.ToString();
             }
             return res;
         }
-
+        //Not implemented. Solr uses Add/AddRange for updats and inserts
         public string Update()
         {
             return null;
         }
 
+        //Performs a query using the lucene/standard parser.
         public List<Product> Search(string query)
         {
             try
             {
                 SolrQuery q = new SolrQuery(query);
+                var r = solr.Ping();
                 List<Product> p = solr.Query(q);
                 return p;
             }
@@ -79,7 +87,7 @@ namespace SolrDAO
         {
             solr.Commit();
         }
-
+        //Retrieves all the categories facets 
         public Dictionary<string, int> FacetSearchGetAll()
         {
             Dictionary<string, int> d = new Dictionary<string, int>();
@@ -92,6 +100,7 @@ namespace SolrDAO
             return d;
         }
 
+        //Dont recall..
         public List<Product> FacetSearchWithQuery(string term)
         {
             List<Product> r = solr.Query("_categories_:" + term, new QueryOptions()
