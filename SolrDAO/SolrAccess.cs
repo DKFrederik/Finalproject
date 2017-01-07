@@ -49,7 +49,7 @@ namespace SolrDAO
             try
             {
                 SolrQuery query = new SolrQuery(q);
-                
+
                 res = solr.Delete(query).Status.ToString();
                 Commit();
             }
@@ -109,6 +109,27 @@ namespace SolrDAO
             });
 
             return r;
+        }
+
+        public void FacetPivot()
+        {
+            SolrFacetPivotQuery f = new SolrFacetPivotQuery()
+            {
+                Fields = new[] { new Pivot().Field = "cat1,cat2,cat3,cat4" },
+                MinCount = 1
+            };
+
+
+        FacetParameters fp = new FacetParameters()
+        {
+            Queries = new[] { f }
+        };
+            var qo = new QueryOptions();
+            qo.Facet = fp;
+            qo.Rows = 0;
+            var res = solr.Query("*:*", qo);
+
+            double x = 2323;
         }
     }
 
