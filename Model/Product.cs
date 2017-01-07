@@ -11,19 +11,19 @@ namespace Model
 {
     public class Product
     {
-        [Number][SolrUniqueKey("id")]
+        [Number]
         public int id { get; set; }
-        [String][SolrField("name")]
+        [String]
         public string name { get; set; }
-        [String][SolrField("description")]
+        [String]
         public string description { get; set; }
-        [String][SolrField("cat1")]
+        [String]
         public string cat1 { get; set; }
-        [String][SolrField("cat2")]
+        [String]
         public string cat2 { get; set; }
-        [String][SolrField("cat3")]
+        [String]
         public string cat3 { get; set; }
-        [String][SolrField("cat4")]
+        [String]
         public string cat4 { get; set; }
 
         public Product()

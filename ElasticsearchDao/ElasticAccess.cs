@@ -15,7 +15,7 @@ namespace ElasticsearchDao
         private readonly ElasticClient client;
 
         public ElasticAccess()
-        {
+        {   
             node = new Uri("localhost:9200");
             node = new Uri("http://localhost:9200/");
             connectionSettings = new ConnectionSettings(node);
