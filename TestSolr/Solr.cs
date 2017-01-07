@@ -24,7 +24,13 @@ namespace TestSolr
         [TestMethod]
         public void TestFacet()
         {
-            var res = solr.FacetSearchGetAll();
+            var res = solr.FacetSingleField();
+        }
+
+        [TestMethod]
+        public void TestFacetPrefix()
+        {
+            solr.FacetPivot();
         }
     }
 }

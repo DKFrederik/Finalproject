@@ -23,8 +23,7 @@ namespace SolrDAO
 
         public string BulkInsert(List<Product> products)
         {
-            string res = "Didnt run..";
-
+            string res = "Failed";
             try
             {
                 res = solr.AddRange(products).Status.ToString();
@@ -80,16 +79,49 @@ namespace SolrDAO
             solr.Commit();
         }
 
-        public Dictionary<string, int> FacetSearchGetAll()
+        public Dictionary<string, int> FacetSingleField()
         {
             Dictionary<string, int> d = new Dictionary<string, int>();
+            
             var r = solr.FacetFieldQuery(new SolrFacetFieldQuery("_categories_"));
+            foreach (var i in r)
+            {
+                d.Add(i.Key, i.Value);
+            }
+            return d;
+        }
+
+        public Dictionary<string, int> FacetSearchPrefix(string prefix)
+        {
+            Dictionary<string, int> d = new Dictionary<string, int>();
+            SolrFacetFieldQuery facet = new SolrFacetFieldQuery("_categories_");
+            facet.Prefix = prefix;
+            var r = solr.FacetFieldQuery(facet);
 
             foreach (var i in r)
             {
                 d.Add(i.Key, i.Value);
             }
             return d;
+        }
+
+        public void FacetPivot()
+        {
+            SolrFacetPivotQuery p = new SolrFacetPivotQuery();
+            p.Fields = new List<string>() { "cat1", "cat2", "cat3", "cat4"};
+
+            var parameters = new FacetParameters()
+            {
+                Queries = new[] { p }
+            };
+
+            var queryOptions = new QueryOptions();
+            queryOptions.Facet = parameters;
+
+            var r = solr.Query("*:*", queryOptions);
+
+            double x = 2331 * 23132;
+
         }
 
         public List<Product> FacetSearchWithQuery(string term)

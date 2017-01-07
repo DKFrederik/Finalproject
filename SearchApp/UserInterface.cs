@@ -40,10 +40,10 @@ namespace SearchApp
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if(textBoxDoc.Text != null && textBoxIndex.Text != null)
+            if (textBoxDoc.Text != null && textBoxIndex.Text != null)
             {
                 responseBox.Text = elastic.AddDocToIndex(textBoxIndex.Text, textBoxDoc.Text);
-            } 
+            }
         }
 
         private void ElasticClearResponseBox(object sender, EventArgs e)
@@ -53,7 +53,7 @@ namespace SearchApp
 
         private void createIndexBtn_Click(object sender, EventArgs e)
         {
-            if(elastic.CreateIndex(textBoxIndex.Text) != -1)
+            if (elastic.CreateIndex(textBoxIndex.Text) != -1)
             {
                 responseBox.Text = "Created. Maybe";
             }
@@ -88,7 +88,7 @@ namespace SearchApp
 
         private void deleteIndexBtn_Click(object sender, EventArgs e)
         {
-            if(elastic.DeleteIndex(textBoxIndex.Text) != -1)
+            if (elastic.DeleteIndex(textBoxIndex.Text) != -1)
             {
                 responseBox.Text = "Deleted! Maybe.";
             }
@@ -123,7 +123,7 @@ namespace SearchApp
             List<Product> products = solr.Search(solrQueryBox.Text);
             if (products != null)
             {
-                 foreach(Product p in products)
+                foreach (Product p in products)
                 {
                     res += p.ToString() + "\n";
                 }
@@ -180,11 +180,12 @@ namespace SearchApp
                 {
                     boxString = "FAILED!";
                 }
-            } else
+            }
+            else
             {
                 List<Product> res = solr.FacetSearchWithQuery(solrFacetQuery.Text);
-                
-                foreach(Product p in res)
+
+                foreach (Product p in res)
                 {
                     boxString += p.ToString() + "\n";
                 }
@@ -199,6 +200,32 @@ namespace SearchApp
 
         private void node_AfterCheck(object sender, TreeViewEventArgs e)
         {
+        }
+
+        private void solrPrefixBtn_Click(object sender, EventArgs e)
+        {
+            Dictionary<string, int> res = solr.FacetSearchPrefix("01/");
+            if (res.Count != 0)
+            {
+                foreach (KeyValuePair<string, int> facet in res)
+                {
+                    TreeNode t = new TreeNode();
+                    string s = facet.Key.Substring(3) + " (" + facet.Value + ")";
+                    solrTreeView.Nodes.Add(s);
+                }
+            }
+
+
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+
         }
     }
 }

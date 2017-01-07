@@ -43,12 +43,17 @@ namespace Controller
 
         public Dictionary<string, int> FacetSearchGetAll()
         {
-            return solr.FacetSearchGetAll();
+            return solr.FacetSingleField();
         }
 
         public List<Product> FacetSearchWithQuery(string term)
         {
             return solr.FacetSearchWithQuery(term);
+        }
+
+        public Dictionary<string, int> FacetSearchPrefix(string prefix)
+        {
+            return solr.FacetSearchPrefix(prefix);
         }
     }
 }

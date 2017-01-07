@@ -32,21 +32,21 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.BulkButton = new System.Windows.Forms.Button();
-            this.deleteIndexBtn = new System.Windows.Forms.Button();
             this.searchBtn = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
+            this.deleteIndexBtn = new System.Windows.Forms.Button();
             this.textboxField = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.textboxQueryTerm = new System.Windows.Forms.TextBox();
             this.createIndexBtn = new System.Windows.Forms.Button();
             this.clearButton = new System.Windows.Forms.Button();
-            this.responseBox = new System.Windows.Forms.RichTextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.textBoxIndex = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxDoc = new System.Windows.Forms.TextBox();
+            this.responseBox = new System.Windows.Forms.RichTextBox();
+            this.BulkButton = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.solrFacetQuery = new System.Windows.Forms.TextBox();
             this.solrFacetButton = new System.Windows.Forms.Button();
@@ -58,6 +58,11 @@
             this.solrResponseBox = new System.Windows.Forms.RichTextBox();
             this.solrIndicator = new System.Windows.Forms.TextBox();
             this.SolrInsert = new System.Windows.Forms.Button();
+            this.solrPrefixBtn = new System.Windows.Forms.Button();
+            this.solrPrefixBox = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.solrTreeView = new System.Windows.Forms.TreeView();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -103,15 +108,15 @@
             this.tabPage1.Text = "Elastic";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // BulkButton
+            // searchBtn
             // 
-            this.BulkButton.Location = new System.Drawing.Point(343, 116);
-            this.BulkButton.Name = "BulkButton";
-            this.BulkButton.Size = new System.Drawing.Size(100, 23);
-            this.BulkButton.TabIndex = 31;
-            this.BulkButton.Text = "Bulk insert";
-            this.BulkButton.UseVisualStyleBackColor = true;
-            this.BulkButton.Click += new System.EventHandler(this.BulkButton_Click);
+            this.searchBtn.Location = new System.Drawing.Point(343, 66);
+            this.searchBtn.Name = "searchBtn";
+            this.searchBtn.Size = new System.Drawing.Size(100, 29);
+            this.searchBtn.TabIndex = 29;
+            this.searchBtn.Text = "Search";
+            this.searchBtn.UseVisualStyleBackColor = true;
+            this.searchBtn.Click += new System.EventHandler(this.searchBtn_Click);
             // 
             // deleteIndexBtn
             // 
@@ -121,26 +126,7 @@
             this.deleteIndexBtn.TabIndex = 30;
             this.deleteIndexBtn.Text = "Delete index";
             this.deleteIndexBtn.UseVisualStyleBackColor = true;
-            this.deleteIndexBtn.Click += new System.EventHandler(deleteIndexBtn_Click);
-            // 
-            // searchBtn
-            // 
-            this.searchBtn.Location = new System.Drawing.Point(343, 66);
-            this.searchBtn.Name = "searchBtn";
-            this.searchBtn.Size = new System.Drawing.Size(100, 29);
-            this.searchBtn.TabIndex = 29;
-            this.searchBtn.Text = "Search";
-            this.searchBtn.UseVisualStyleBackColor = true;
-            this.searchBtn.Click += new System.EventHandler(searchBtn_Click);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(259, 43);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(29, 13);
-            this.label4.TabIndex = 28;
-            this.label4.Text = "Field";
+            this.deleteIndexBtn.Click += new System.EventHandler(this.deleteIndexBtn_Click);
             // 
             // textboxField
             // 
@@ -148,15 +134,6 @@
             this.textboxField.Name = "textboxField";
             this.textboxField.Size = new System.Drawing.Size(100, 20);
             this.textboxField.TabIndex = 27;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(259, 17);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(58, 13);
-            this.label3.TabIndex = 26;
-            this.label3.Text = "Query term";
             // 
             // textboxQueryTerm
             // 
@@ -173,7 +150,7 @@
             this.createIndexBtn.TabIndex = 24;
             this.createIndexBtn.Text = "Create index";
             this.createIndexBtn.UseVisualStyleBackColor = true;
-            this.createIndexBtn.Click += new System.EventHandler(createIndexBtn_Click);
+            this.createIndexBtn.Click += new System.EventHandler(this.createIndexBtn_Click);
             // 
             // clearButton
             // 
@@ -184,16 +161,6 @@
             this.clearButton.Text = "Clear response field";
             this.clearButton.UseVisualStyleBackColor = true;
             this.clearButton.Click += new System.EventHandler(this.ElasticClearResponseBox);
-            // 
-            // responseBox
-            // 
-            this.responseBox.AcceptsTab = true;
-            this.responseBox.Location = new System.Drawing.Point(7, 164);
-            this.responseBox.Name = "responseBox";
-            this.responseBox.ReadOnly = true;
-            this.responseBox.Size = new System.Drawing.Size(762, 386);
-            this.responseBox.TabIndex = 22;
-            this.responseBox.Text = "";
             // 
             // button1
             // 
@@ -237,8 +204,51 @@
             this.textBoxDoc.Size = new System.Drawing.Size(100, 20);
             this.textBoxDoc.TabIndex = 17;
             // 
+            // responseBox
+            // 
+            this.responseBox.AcceptsTab = true;
+            this.responseBox.Location = new System.Drawing.Point(7, 164);
+            this.responseBox.Name = "responseBox";
+            this.responseBox.ReadOnly = true;
+            this.responseBox.Size = new System.Drawing.Size(762, 386);
+            this.responseBox.TabIndex = 22;
+            this.responseBox.Text = "";
+            // 
+            // BulkButton
+            // 
+            this.BulkButton.Location = new System.Drawing.Point(343, 116);
+            this.BulkButton.Name = "BulkButton";
+            this.BulkButton.Size = new System.Drawing.Size(100, 23);
+            this.BulkButton.TabIndex = 31;
+            this.BulkButton.Text = "Bulk insert";
+            this.BulkButton.UseVisualStyleBackColor = true;
+            this.BulkButton.Click += new System.EventHandler(this.BulkButton_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(259, 43);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(29, 13);
+            this.label4.TabIndex = 28;
+            this.label4.Text = "Field";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(259, 17);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(58, 13);
+            this.label3.TabIndex = 26;
+            this.label3.Text = "Query term";
+            // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.solrTreeView);
+            this.tabPage2.Controls.Add(this.label6);
+            this.tabPage2.Controls.Add(this.label5);
+            this.tabPage2.Controls.Add(this.solrPrefixBox);
+            this.tabPage2.Controls.Add(this.solrPrefixBtn);
             this.tabPage2.Controls.Add(this.solrFacetQuery);
             this.tabPage2.Controls.Add(this.solrFacetButton);
             this.tabPage2.Controls.Add(this.solrFacetBox);
@@ -259,14 +269,14 @@
             // 
             // solrFacetQuery
             // 
-            this.solrFacetQuery.Location = new System.Drawing.Point(443, 3);
+            this.solrFacetQuery.Location = new System.Drawing.Point(564, 35);
             this.solrFacetQuery.Name = "solrFacetQuery";
             this.solrFacetQuery.Size = new System.Drawing.Size(183, 20);
             this.solrFacetQuery.TabIndex = 11;
             // 
             // solrFacetButton
             // 
-            this.solrFacetButton.Location = new System.Drawing.Point(443, 35);
+            this.solrFacetButton.Location = new System.Drawing.Point(524, 61);
             this.solrFacetButton.Name = "solrFacetButton";
             this.solrFacetButton.Size = new System.Drawing.Size(75, 23);
             this.solrFacetButton.TabIndex = 10;
@@ -276,9 +286,9 @@
             // 
             // solrFacetBox
             // 
-            this.solrFacetBox.Location = new System.Drawing.Point(443, 94);
+            this.solrFacetBox.Location = new System.Drawing.Point(443, 388);
             this.solrFacetBox.Name = "solrFacetBox";
-            this.solrFacetBox.Size = new System.Drawing.Size(386, 434);
+            this.solrFacetBox.Size = new System.Drawing.Size(386, 140);
             this.solrFacetBox.TabIndex = 9;
             this.solrFacetBox.Text = "";
             // 
@@ -344,6 +354,49 @@
             this.SolrInsert.UseVisualStyleBackColor = true;
             this.SolrInsert.Click += new System.EventHandler(this.SolrInsert_Click);
             // 
+            // solrPrefixBtn
+            // 
+            this.solrPrefixBtn.Location = new System.Drawing.Point(443, 61);
+            this.solrPrefixBtn.Name = "solrPrefixBtn";
+            this.solrPrefixBtn.Size = new System.Drawing.Size(75, 23);
+            this.solrPrefixBtn.TabIndex = 12;
+            this.solrPrefixBtn.Text = "Prefix D :";
+            this.solrPrefixBtn.UseVisualStyleBackColor = true;
+            this.solrPrefixBtn.Click += new System.EventHandler(this.solrPrefixBtn_Click);
+            // 
+            // solrPrefixBox
+            // 
+            this.solrPrefixBox.Location = new System.Drawing.Point(443, 35);
+            this.solrPrefixBox.Name = "solrPrefixBox";
+            this.solrPrefixBox.Size = new System.Drawing.Size(100, 20);
+            this.solrPrefixBox.TabIndex = 13;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(440, 19);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(33, 13);
+            this.label5.TabIndex = 14;
+            this.label5.Text = "Prefix";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(564, 19);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(57, 13);
+            this.label6.TabIndex = 15;
+            this.label6.Text = "Facet term";
+            // 
+            // solrTreeView
+            // 
+            this.solrTreeView.Location = new System.Drawing.Point(443, 94);
+            this.solrTreeView.Name = "solrTreeView";
+            this.solrTreeView.Size = new System.Drawing.Size(385, 288);
+            this.solrTreeView.TabIndex = 17;
+            this.solrTreeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
+            // 
             // UserInterface
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -391,6 +444,11 @@
         private System.Windows.Forms.RichTextBox solrFacetBox;
         private System.Windows.Forms.Button solrFacetButton;
         private System.Windows.Forms.TextBox solrFacetQuery;
+        private System.Windows.Forms.Button solrPrefixBtn;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox solrPrefixBox;
+        private System.Windows.Forms.TreeView solrTreeView;
     }
 }
 
