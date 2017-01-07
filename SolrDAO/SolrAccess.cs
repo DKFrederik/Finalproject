@@ -115,7 +115,7 @@ namespace SolrDAO
         {
             SolrFacetPivotQuery f = new SolrFacetPivotQuery()
             {
-                Fields = new[] { new Pivot().Field = "cat1,cat2,cat3,cat4" },
+                Fields = new[] { new Pivot().Field = "_cat1_,_cat2_,_cat3_,_cat4_" },
                 MinCount = 1
             };
 

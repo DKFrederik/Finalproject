@@ -20,16 +20,16 @@ namespace Model
         [String]
         [SolrField("description")]
         public string description { get; set; }
-        [String]
+        [String(DocValues = true)]
         [SolrField("cat1")]
         public string cat1 { get; set; }
-        [String]
+        [String(DocValues = true)]
         [SolrField("cat2")]
         public string cat2 { get; set; }
-        [String]
+        [String(DocValues = true)]
         [SolrField("cat3")]
         public string cat3 { get; set; }
-        [String]
+        [String(DocValues = true)]
         [SolrField("cat4")]
         public string cat4 { get; set; }
 
