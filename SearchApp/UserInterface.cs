@@ -16,11 +16,13 @@ namespace SearchApp
     {
         private ElasticCtr elastic;
         private SolrCtr solr;
+        private DataController dCtr;
         public UserInterface()
         {
             InitializeComponent();
             elastic = new ElasticCtr();
             solr = new SolrCtr();
+            dCtr = new DataController();
         }
 
         private void Form13_Load(object sender, EventArgs e)
@@ -197,8 +199,41 @@ namespace SearchApp
         {
         }
 
-        private void node_AfterCheck(object sender, TreeViewEventArgs e)
+        }
+
+        private void deleteIndexBtn_Click_1(object sender, EventArgs e)
         {
+            dCtr.createFullTextIndex("Perfion");
+        }
+
+        private void searchSQL_Click(object sender, EventArgs e)
+        {
+            List<Product> list = dCtr.searchFullText(sqlSearchBox.Text.Split(null).ToList<string>());
+
+            string response = "";
+            foreach (Product p in list)
+            {
+                response += p.name + "\n";
+                response += p.description + "\n\n";
+            }
+
+            sqlResponseBox.Text = response;
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void facet1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BulkText_Click(object sender, EventArgs e)
+        {
+            string response = elastic.InsertBulkText(textBoxIndex.Text);
+            responseBox.Text = response;
         }
     }
 }

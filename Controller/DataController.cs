@@ -21,6 +21,11 @@ namespace Controller
             return pDao.GetProducts();
         }
 
+        public List<Text> GetText()
+        {
+            return pDao.GetText();
+        }
+
         public string SaveData()
         {
             return null;
@@ -29,6 +34,15 @@ namespace Controller
         public string SearchData()
         {
             return null;
+        }
+        public void createFullTextIndex(string catalogName)
+        {
+            pDao.createFullTextIndex(catalogName);
+        }
+
+        public List<Product> searchFullText(List<string> wordList)
+        {
+            return pDao.Search(wordList);
         }
 
     }

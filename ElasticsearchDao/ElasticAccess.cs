@@ -15,7 +15,7 @@ namespace ElasticsearchDao
         private readonly ElasticClient client;
 
         public ElasticAccess()
-        {
+        {   
             node = new Uri("localhost:9200");
             node = new Uri("http://localhost:9200/");
             connectionSettings = new ConnectionSettings(node);
@@ -79,6 +79,22 @@ namespace ElasticsearchDao
             {
                 //For each Product in Product-list, index it to the given index
                 descriptor.Index<Product>(i => i.Document(product));
+            }
+
+            string response = client.Bulk(descriptor).ToString();
+
+            return response;
+        }
+
+        public string InsertBulkText(List<Text> texts, string index)
+        {
+            var descriptor = new BulkDescriptor();
+            descriptor.Index(new IndexName() { Name = index });
+
+            foreach (var text in texts)
+            {
+                //For each Product in Product-list, index it to the given index
+                descriptor.Index<Text>(i => i.Document(text));
             }
 
             string response = client.Bulk(descriptor).ToString();

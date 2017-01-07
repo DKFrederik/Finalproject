@@ -58,5 +58,147 @@ namespace MssqlDAO
             }
             return products;
         }
+
+
+        public List<Text> GetText()
+        {
+
+            //SQL string for fetching data from MSSQL database
+            string sql = "SELECT * FROM Products";
+            //Create a empty list of products
+            var texts = new List<Text>();
+
+            using (SqlCommand cmd = dba.GetDbCommand(sql))
+            {
+                //DataReader
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    try
+                    {
+                        while (reader.Read())
+                        {
+                            var p = new Text()
+                            {
+                                id = reader.GetInt32("ItemID"),
+                                text = reader.GetString("Text"),
+                            };
+                            //Add every Product to List
+                            texts.Add(p);
+                        }
+                    }
+
+                    catch
+                    {
+                        Console.WriteLine("An exception occurred!");
+                    }
+                }
+                cmd.Parameters.Clear();
+            }
+            double x = 1;
+            return texts;
+        }
+
+        public void createFullTextIndex(string catalogName)
+        {
+            //Rowcount to be returned from executed sql command.
+            int rc = -1;
+
+            //SQL string for creating Full text catalog and index MSSQL database
+            string sql = "CREATE FULLTEXT INDEX ON Products(description) KEY INDEX " + getIndexId();
+
+
+            using (SqlCommand cmd = dba.GetDbCommand(sql))
+            {
+                try
+                {
+                    rc = cmd.ExecuteNonQuery();
+                }
+                catch (Exception e)
+                {
+                    throw e;
+                }
+            }
+
+        }
+
+        private string getIndexId()
+        {
+            //Rowcount to be returned from executed sql command.
+            int rc = -1;
+            string sql = "SELECT name from sysindexes where object_id('Products') = id";
+            string result = "";
+            using (SqlCommand cmd = dba.GetDbCommand(sql))
+            {
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    try
+                    {
+                        while (reader.Read())
+                        {
+                            result = reader.GetString("name");
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        throw e;
+                    }
+                }
+            }
+            return result;
+        }
+
+        public List<Product> Search(List<string> words)
+        {
+            //Instantiate a list to be returned
+            List<Product> products = new List<Product>();
+
+            string sql = "SELECT * FROM Products WHERE CONTAINS(*, '";
+            int sizeOfList = words.Count();
+            //Build the sql string
+            for (int i = 0; i < sizeOfList; i++)
+            {
+                sql += words[i];
+                if (i != (sizeOfList-1))
+                {
+                    sql += " AND ";
+                }
+            }
+
+            sql += "')";
+
+            using (SqlCommand cmd = dba.GetDbCommand(sql))
+            {
+                try
+                {
+                    //DataReader
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+
+                        while (reader.Read())
+                        {
+                            var p = new Product()
+                            {
+                                id = reader.GetInt32("id"),
+                                name = reader.GetString("name"),
+                                description = reader.GetString("description"),
+                                cat1 = reader.GetString("cat1"),
+                                cat2 = reader.GetString("cat2"),
+                                cat3 = reader.GetString("cat3"),
+                                cat4 = reader.GetString("cat4")
+                            };
+                            //Add every Product to List
+                            products.Add(p);
+                        }
+                    }
+                }
+                catch
+                {
+                    Console.WriteLine("An exception occurred!");
+                }
+                
+                cmd.Parameters.Clear();
+            }
+            return products;
+        }
     }
 }
