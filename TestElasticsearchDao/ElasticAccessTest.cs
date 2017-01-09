@@ -27,8 +27,14 @@ namespace TestElasticsearchDao
         }
 
         [TestMethod]
-        public void TestFacet()
+        public void TestTermAggregateNested()
         {
+            e.TermAggregateNested();
+        }
+        [TestMethod]
+        public void TestTermAggregate()
+        {
+            e.TermAggregate();
         }
     }
 }

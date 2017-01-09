@@ -128,9 +128,9 @@ namespace SolrDAO
             qo.Facet = fp;
             qo.Rows = 0;
             var res = solr.Query("*:*", qo);
-
-            double x = 2323;
         }
     }
 
 }
+
+

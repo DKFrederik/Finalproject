@@ -102,5 +102,13 @@ namespace ElasticsearchDao
 
             return response;
         }
+
+        public void TermAggregate()
+        {
+        }
+
+        public void TermAggregateNested()
+        {
+        }
     }
 }
